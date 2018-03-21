@@ -89,8 +89,10 @@ int main(){
             scanf("%d",&index);
             fflush(stdin);
         //correct range? try add on board.
-        }while((index>=1||index<=9)&&!add_board(index));
+        }while(index < 1 || index > 9 || !add_board(index));
     }while(!check_win()&&turn++<9);
+    free(player->next); 
+    free(player);
     return 0;
 }
 
@@ -109,7 +111,7 @@ int add_board(int index){
             2^6|2^7|2^8
                |   |
         */
-        player->cod+=pow(2,index);
+        player->cod |= 1 << index;
         return 1;
     }
     return 0;
@@ -117,7 +119,7 @@ int add_board(int index){
 
 int check_win(){
     int x;
-    for(x=0;x<9;x++){
+    for(int x = 0; x < 8; x++){
         /*
             Example check:
 
