@@ -134,7 +134,7 @@ int check_win(){
         */
         if((player->cod&win_code[x])==win_code[x]){
             print_board();
-            printf("\n\t Player: %c Ganhou!\n\n",player->symbol);
+            printf("\n\t   Player: %c Win!\n\n",player->symbol);
             return 1;
         }
     }
